@@ -90,7 +90,7 @@ You can access the pre-configured Postman collection to test all endpoints using
 │   ├── main.py         # Application entry point
 │   ├── models.py       # Database Tables (SQLModel)
 │   └── schemas.py      # Pydantic Models & Validation
-├── .env.dummy                # Environment variables
+├── .env.dummy          # Environment variables
 ├── docker-compose.yml  # Docker orchestration
 ├── Dockerfile          # Container definition
 ├── requirements.txt    # Python dependencies
