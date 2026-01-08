@@ -1,0 +1,26 @@
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import computed_field
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+
+    app_name: str = "Spy-Agency"
+
+    POSTGRES_DB: str
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_HOST: str
+    POSTGRES_PORT: int
+
+    @computed_field
+    @property
+    def DATABASE_URL(self) -> str:
+        return (
+            f"postgresql://{self.POSTGRES_USER}:"
+            f"{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:"
+            f"{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
+        )
+
+
+settings = Settings() # type: ignore
